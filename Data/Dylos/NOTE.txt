@@ -1,0 +1,1 @@
+Unless sepecified otherwise, the date in the log files are 1 day earlier than the real date. i.e June 15 in log file means June 16 in reality. The time, however is correct.

@@ -1,0 +1,736 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"file",
+				"fileList"
+			],
+			[
+				"ma",
+				"mass_aveDay_DylosV"
+			],
+			[
+				"mass_",
+				"mass_aveDay_Dylos"
+			],
+			[
+				"ave",
+				"aveDay"
+			],
+			[
+				"day",
+				"dayV"
+			],
+			[
+				"US",
+				"US_data"
+			],
+			[
+				"Us",
+				"US_data"
+			],
+			[
+				"book",
+				"bookRouter"
+			],
+			[
+				"boo",
+				"bookRouter"
+			],
+			[
+				"hr",
+				"href\tAttr"
+			],
+			[
+				"p",
+				"pipe"
+			],
+			[
+				"js",
+				"jshint"
+			],
+			[
+				"do",
+				"double"
+			],
+			[
+				"pro",
+				"process"
+			],
+			[
+				"pr",
+				"process"
+			],
+			[
+				"fu",
+				"fuction"
+			],
+			[
+				"st",
+				"stderr"
+			],
+			[
+				"std",
+				"sdterr"
+			],
+			[
+				"coin",
+				"container"
+			],
+			[
+				"cols",
+				"col-sm-12"
+			],
+			[
+				"col-sm-o",
+				"col-sm-offset-2"
+			],
+			[
+				"col",
+				"col-sm-8"
+			],
+			[
+				"fa-",
+				"fa-comment"
+			],
+			[
+				"col-",
+				"col-sm-12"
+			],
+			[
+				"colsm",
+				"col-sm-6"
+			],
+			[
+				"post",
+				"post-grid"
+			],
+			[
+				"pos",
+				"post-grid"
+			],
+			[
+				"text",
+				"text-center"
+			],
+			[
+				"map",
+				"mapCtrl"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"Blog",
+				"BlogController"
+			],
+			[
+				"bac",
+				"background-image"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.m",
+			"settings":
+			{
+				"buffer_size": 3243,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data.csv",
+			"settings":
+			{
+				"buffer_size": 70056,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": ":w",
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":",
+				":w - Save"
+			],
+			[
+				":e",
+				":e - Revert"
+			],
+			[
+				"theme",
+				"BracketHighlighter: Select Tag Name (closing and opening)"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"package control:i",
+				"Package Control: Install Package"
+			],
+			[
+				"htm",
+				"HTMLPrettify"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Preferences: Browse Packages"
+			],
+			[
+				":pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				":inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				":tabe",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"exit",
+				"Set Syntax: Textile"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			],
+			[
+				":ope",
+				"File: Open In Browser - Production Server"
+			],
+			[
+				":op",
+				"File: Open In Browser - Production Server"
+			],
+			[
+				":open",
+				"File: Open In Browser - Production Server"
+			],
+			[
+				":o",
+				"File: Open In Browser - Production Server"
+			],
+			[
+				":vi",
+				"File: New View into File"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 590.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/macbook/GitHub/AirQuality",
+		"/Users/macbook/GitHub/AirQuality/Data"
+	],
+	"file_history":
+	[
+		"/Users/macbook/GitHub/nodejs_dir/node_express/main.m",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/gulpfile.js",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/src/view/bookListView.ejs",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/src/view/bookView.ejs",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/src/view/books.ejs",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/src/view/index.html.old",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/.bowerrc",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/src/view/index.ejs",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/src/view/test",
+		"/Users/macbook/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc.defaults.json",
+		"/Users/macbook/Library/Application Support/Sublime Text 3/Packages/User/.jsbeautifyrc",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/src/view/index.temp.ejs",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/src/view/index.jade",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/bower.json",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/src/view/index.html",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/public/lib/bootstrap/bower.json",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-5/js/main.js",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-3/1-event.js",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/pVkM36Biz1.zip",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mod-2/package.json",
+		"/Users/macbook/GitHub/nodejs_dir/node_express/mongo.js",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-7/4-cluster.js",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-7/3-child-fork.js",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-7/2-child-spawn.js",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-7/note.txt",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-7/1-child-exec.js",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-7/honorstudent.js",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-6/mathfun.js",
+		"/Users/macbook/GitHub/nodejs_dir/plural/node-5/1-client.js",
+		"/Users/macbook/GitHub/nodejs_dir/ex_8/program.js",
+		"/Users/macbook/GitHub/node-study/angular-js-google-map/index.html",
+		"/Users/macbook/Library/Application Support/Sublime Text 3/Packages/User/Base File.sublime-settings",
+		"/Users/macbook/GitHub/node-study/angularjs-google-maps-directive/index.html",
+		"/Users/macbook/GitHub/node-study/blog/front/map.html",
+		"/Users/macbook/GitHub/node-study/angularjs-google-maps-directive/js/index.js",
+		"/Users/macbook/GitHub/node-study/map/index.htm",
+		"/Users/macbook/GitHub/node-study/map/map.js",
+		"/Users/macbook/GitHub/node-study/todo/index.html",
+		"/Users/macbook/GitHub/node-study/todo/js/services/todoStorage.js",
+		"/Users/macbook/GitHub/node-study/todo/js/controllers/todoCtrl.js",
+		"/Users/macbook/GitHub/node-study/todo/js/app.js",
+		"/Users/macbook/GitHub/node-study/angular/test.htm",
+		"/Users/macbook/workspace_v7/QuickReCall/Debug/Main_task.d",
+		"/Users/macbook/workspace_v6_2/1_MSP_Profile/Debug/blink.d",
+		"/Users/macbook/Documents\\Sheet1.tex",
+		"/Users/macbook/Documents\\Sheet3.tex",
+		"/Users/macbook/Documents\\Sheet2.tex",
+		"/Users/macbook/GitHub/viabike-web/pricing.html",
+		"/Users/macbook/Downloads/luna/template-home.php",
+		"/Users/macbook/GitHub/viabike-web/index.html",
+		"/Users/macbook/GitHub/AppUI 2.6 by pixelcave/02 - AppUI Frontend Template/01 - Get Started Version/css/plugins.css",
+		"/Users/macbook/GitHub/AppUI 2.6 by pixelcave/02 - AppUI Frontend Template/01 - Get Started Version/css/themes.css",
+		"/Users/macbook/GitHub/AppUI 2.6 by pixelcave/02 - AppUI Frontend Template/01 - Get Started Version/css/main.css",
+		"/Users/macbook/GitHub/AppUI 2.6 by pixelcave/02 - AppUI Frontend Template/03 - HTML Version/index.html",
+		"/Users/macbook/GitHub/AppUI 2.6 by pixelcave/02 - AppUI Frontend Template/01 - Get Started Version/pricing.html",
+		"/Users/macbook/GitHub/AppUI 2.6 by pixelcave/02 - AppUI Frontend Template/01 - Get Started Version/index.html",
+		"/Users/macbook/GitHub/AppUI 2.6 by pixelcave/02 - AppUI Frontend Template/03 - HTML Version/css/main.css",
+		"/Users/macbook/GitHub/AppUI 2.6 by pixelcave/02 - AppUI Frontend Template/03 - HTML Version/blog.html",
+		"/Users/macbook/GitHub/AppUI 2.6 by pixelcave/02 - AppUI Frontend Template/03 - HTML Version/jobs.html",
+		"/Users/macbook/Library/Application Support/Sublime Text 3/Packages/ColorPicker/ColorPicker.sublime-settings"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 95.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"mass_aveDay_DylosV",
+			"fonts",
+			"font",
+			"nav",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"socket",
+			"app2",
+			"map",
+			"site-section",
+			"cross",
+			"marker",
+			"click",
+			"addmarker",
+			"google.maps.Marker",
+			"animation",
+			"lat",
+			"location",
+			"nav",
+			"#2",
+			"per",
+			"Pricing",
+			"\n                    ",
+			"style",
+			"page-header",
+			"m05hes",
+			"HEADER",
+			"manchester",
+			"m04bos",
+			"color",
+			"theme",
+			"scroll",
+			"themed",
+			"/default",
+			"default",
+			"theme",
+			"header",
+			"site-menu",
+			"Home",
+			"section-light",
+			"powerful",
+			"A powerful",
+			"UI"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"app"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.m",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2930,
+								2930
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										3038,
+										3039
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										2922,
+										2923
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/Matlab/Matlab.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "data.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 70056,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								354,
+								354
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 106.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 199.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "airquality.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/GitHub/node-study/blog/front/js/work.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 139.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
