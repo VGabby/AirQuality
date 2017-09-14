@@ -36,7 +36,6 @@ end
 %Create usTable with timestamp
 % Join weather and US table by TimeStamp
 Out = outerjoin(weatherTable,usTable,'MergeKeys',true);
-
 disp('-----3. Processing ISTable-----');
 %[Date,mass,count]
 ISTable = readtable('./Data/DS1.xlsx','Sheet','IS_data');
@@ -47,7 +46,7 @@ ISTable.Properties.VariableNames{3} = 'count_IS';
 i = 1;
 cnt = 0 ;
 while(i <= size(ISTable,1))
-	if(isnat(ISTable.Date(i)))
+	if(isnat(ISTable.Date(i)) || isnan(ISTable.mass_IS(i)) || ISTable.mass_IS(i) == 0 )
 		cnt = cnt + 1;
 		ISTable(i,:) = [];
 	else
@@ -59,18 +58,17 @@ fprintf('Rows Removed: %d\n', cnt);
 
 % Join weather and US table by TimeStamp
 Out = outerjoin(Out,ISTable,'MergeKeys',true);
-
-
 disp('-----4. Processing DYLOS Data-----');
 % create temp table
-DateV = datetime()';
-mass_aveDay_DylosV1 = 0';
-mass_aveDay_DylosV2 = 0';
+DateV = datetime();
+mass_aveDay_DylosV1 = 0;
+mass_aveDay_DylosV2 = 0;
 
 fileList = dir('./Data/Dylos/*.txt');
 
 k = 1;
-while(k <= size(fileList,1))
+%while(k <= size(fileList,1))
+while(k <= 5) 
 
 	file = strcat(fileList(k).folder,'/',fileList(k).name);
 	dylosData = readtable(file);
@@ -96,8 +94,8 @@ while(k <= size(fileList,1))
 				break
 			end
 		end
-		sumDay1 = sumDay1 / j / 60;
-		sumDay2 = sumDay2 / j / 60;
+		sumDay1 = sumDay1 / j ;
+		sumDay2 = sumDay2 / j ;
 	    aveDay1(end+1) = sumDay1 / j;
 	    aveDay2(end+1) = sumDay2 / j;
 	    y = y + 2000 ; % fix later !
@@ -116,6 +114,55 @@ dylosTable = table(DateV',mass_aveDay_DylosV1',mass_aveDay_DylosV2','VariableNam
 
 % Join weather and US table by TimeStamp
 Out = outerjoin(Out,dylosTable,'MergeKeys',true);
+disp('-----5. Processing LaserEgg Data-----');
+laserEggTable = readtable('./Data/LaserEgg/Consolidate June-July 2017.xlsx','Sheet','Duplicates removed');
+laserEggTable.Properties.VariableNames{1} = 'Date';
+% clean up data empty row 
+i = 1;
+cnt = 0 ;
+while(i <= size(laserEggTable,1))
+	if(isnat(laserEggTable.Date(i)) || string(laserEggTable.Pm2_5(i)) == '-' || string(laserEggTable.Pm10(i)) == '-')
+		cnt = cnt + 1;
+		laserEggTable(i,:) = [];
+	else
+		i = i + 1;	
+	end
+end
+fprintf('Rows Removed: %d\n', cnt);
+
+% transform to average day at DylosData 
+
+i = 1;
+aveDayPM2 = [];	
+aveDayPM10 = [];	
+dayV = datetime();
+while(i < size(laserEggTable,1))
+	[y,m,d]= ymd(laserEggTable.Date(i));
+	[yy,mm,dd] = ymd(laserEggTable.Date(i+1));
+	j = 1;
+		sumPM2  = str2double(laserEggTable.Pm2_5(i));
+		sumPM10 = str2double(laserEggTable.Pm10(i));
+	while( (y == yy) && (m == mm) && (d == dd))
+		sumPM2 = sumPM2 + str2double(laserEggTable.Pm2_5(i+j));
+		sumPM10 = sumPM10 + str2double(laserEggTable.Pm10(i+j));
+		j = j + 1;
+		if((i + j) <= size(laserEggTable,1))
+			[yy,mm,dd] = ymd(laserEggTable.Date(i + j));
+		else
+			break
+		end
+	end
+    aveDayPM2(end+1) = sumPM2/ j;
+    aveDayPM10(end+1) = sumPM10/ j;
+    dayV(end+1) = datetime(y,m,d);
+	i = i + j;
+end
+dayV(1) = []; % clean up first element
+
+laserEggTable = table(dayV',aveDayPM2',aveDayPM10','VariableNames',{'Date' 'LE_Pm2_5' 'LE_Pm10'});
+
+% Join weather and US table by TimeStamp
+Out = outerjoin(Out,laserEggTable,'MergeKeys',true);
 disp('----- EXPORT CSV file --------');
 writetable(Out,'data.csv')
 
