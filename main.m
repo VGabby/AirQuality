@@ -49,28 +49,36 @@ Out = outerjoin(weatherTable,usTable,'MergeKeys',true);
 disp('-----3. Processing ISTable-----');
 
 filename = './Data/ISHCMC Pollution Readings.xlsx';
-sheetname = '1718';
-%[Date,mass,count]
-ISTable = readtable(filename,'Sheet',sheetname);
-ISTable.Properties.VariableNames{'Month_Day_Year'} = 'Date';
-ISTable.Properties.VariableNames{2} = 'mass_IS';
-ISTable.Properties.VariableNames{3} = 'count_IS';
-% clean up empty data
-i = 1;
-cnt = 0 ;
-while(i <= size(ISTable,1))
-	if(isnat(ISTable.Date(i)) || isnan(ISTable.mass_IS(i)) || ISTable.mass_IS(i) == 0 )
-		cnt = cnt + 1;
-		ISTable(i,:) = [];
-	else
-		i = i + 1;	
-	end
-	
-end
-fprintf('Rows Removed: %d\n', cnt);
+sheetname = ["1617", "1718"];
 
-% Join weather and US table by TimeStamp
-Out = outerjoin(Out,ISTable(:,1:3),'MergeKeys',true);
+for s = 1:size(sheetname,2)
+	s
+	%[Date,mass,count]
+	ISTable = readtable(filename,'Sheet',sheetname(s));
+	ISTable.Properties.VariableNames{'Month_Day_Year'} = 'Date';
+	ISTable.Date = datetime(ISTable.Date);
+	ISTable.Properties.VariableNames{2} = 'mass_IS';
+	ISTable.Properties.VariableNames{3} = 'count_IS';
+
+	% clean up empty data
+	i = 1;
+	cnt = 0 ;
+	while(i <= size(ISTable,1))
+		if(isnat(ISTable.Date(i)) || isnan(ISTable.mass_IS(i)) || ISTable.mass_IS(i) == 0 )
+			cnt = cnt + 1;
+			ISTable(i,:) = [];
+		else
+			i = i + 1;	
+		end
+		
+	end
+	if(~isnumeric(ISTable.count_IS))	% convert to number if input is string
+		ISTable.count_IS = cellfun(@str2num,ISTable.count_IS);
+	end
+	fprintf('Rows Removed: %d\n', cnt);
+	Out = outerjoin(Out,ISTable(:,1:3),'MergeKeys',true);
+
+end
 
 %{
 disp('-----4. Processing DYLOS Data-----');
