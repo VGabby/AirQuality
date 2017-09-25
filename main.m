@@ -1,44 +1,57 @@
-clear;
+% Data clean up
+% Init
+
+clear ; close all; clc ;
 disp('----- AIR QUALITY DATA CLEAN UP -----');
 disp('-----1. Processing WeatherData -----');
-weatherTable = readtable('./Data/DS1.xlsx','Sheet','Weather');
+filename = './Data/Weather_Data(2015-2017 Measured at TSN_AP.xlsx'
+weatherTable = readtable(filename);
+fprintf('Load table size \n');
+weatherTable.Properties.VariableNames{'x7'} = 'Date'; % fix name
 size(weatherTable)
+
 
 
 disp('-----2. Processing US_data-----');
 %[No,Site,Param,Date,Year,Month,Day,Hour,...]
-US_data = readtable('./Data/DS1.xlsx','Sheet','US_data');
+filename = './Data/HoChiMinhCity_PM2.5_2017_YTD.csv'
+US_data = readtable(filename);
 % transform to average day at US_data 
-i = 1;
-j = 1;
 usDataOut = [];
 aveDay = [];
 dayV = datetime();
-while(i < size(US_data,1))
-	y = US_data.Year(i);
-    m = US_data.Month(i);
-    d = US_data.Day(i);
-    h = US_data.Hour(i);
-    j = 1;
-    sumDay = US_data.RawConc_(i);
-    while(d == US_data.Day(i+j))
-    	sumDay = sumDay + US_data.RawConc_(i+j);
-    	j = j + 1;
-    end 
-    aveDay(end+1) = sumDay / j;
+iv = find( ~(strcmp(US_data.QCName,'Valid')));
+fprintf('Clear %d invalid reading \n', length(iv));
+US_data(iv,:) = [];
+while(size(US_data,1) > 0)
+	y = US_data.Year(1);
+    m = US_data.Month(1);
+    d = US_data.Day(1);
+
+    % filter valid data in day
+    v = find((US_data.Year == y) & (US_data.Month == m) & (US_data.Day == d));
+
     dayV(end+1) = datetime(y,m,d);
-    i = i + j;	
+    aveDay(end+1) = mean(US_data.RawConc_(v));
+    US_data(v,:) = [];
 end
 	dayV(1) = []; % clean up first element
 	usTable = table;
 	usTable.Date = dayV';
 	usTable.mass_aveDay_US = aveDay';
+
 %Create usTable with timestamp
 % Join weather and US table by TimeStamp
+
 Out = outerjoin(weatherTable,usTable,'MergeKeys',true);
+
+
 disp('-----3. Processing ISTable-----');
+
+filename = './Data/ISHCMC Pollution Readings.xlsx';
+sheetname = '1718';
 %[Date,mass,count]
-ISTable = readtable('./Data/DS1.xlsx','Sheet','IS_data');
+ISTable = readtable(filename,'Sheet',sheetname);
 ISTable.Properties.VariableNames{'Month_Day_Year'} = 'Date';
 ISTable.Properties.VariableNames{2} = 'mass_IS';
 ISTable.Properties.VariableNames{3} = 'count_IS';
@@ -57,7 +70,9 @@ end
 fprintf('Rows Removed: %d\n', cnt);
 
 % Join weather and US table by TimeStamp
-Out = outerjoin(Out,ISTable,'MergeKeys',true);
+Out = outerjoin(Out,ISTable(:,1:3),'MergeKeys',true);
+
+%{
 disp('-----4. Processing DYLOS Data-----');
 % create temp table
 DateV = datetime();
@@ -161,6 +176,7 @@ laserEggTable = table(dayV',aveDayPM2',aveDayPM10','VariableNames',{'Date' 'LE_P
 
 % Join weather and US table by TimeStamp
 Out = outerjoin(Out,laserEggTable,'MergeKeys',true);
+%}
 disp('----- EXPORT CSV file --------');
 writetable(Out,'data.csv')
 

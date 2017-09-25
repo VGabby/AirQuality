@@ -23,9 +23,9 @@ mdl1 = fitlm(data,'linear','ResponseVar','mass_aveDay_US');
 
 fprintf('2. Run Regression on Internation School \n');
 % change y column
-data(1:200,24) = table.
+%data(1:200,24) = table.
 %mdl2 = fitlm(data,'linear','ResponseVar','mass_IS');
 fprintf('3. Run Regression on  Dylos\n');
 % change y column
-data(1:200,24) = table.
+%data(1:200,24) = table.
 %mdl3 = fitlm(data,'linear','ResponseVar','aveDay_Dylos_Small');
