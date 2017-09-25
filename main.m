@@ -67,9 +67,7 @@ mass_aveDay_DylosV2 = 0;
 fileList = dir('./Data/Dylos/*.txt');
 
 k = 1;
-%while(k <= size(fileList,1))
-while(k <= 5) 
-
+while(k <= size(fileList,1))
 	file = strcat(fileList(k).folder,'/',fileList(k).name);
 	dylosData = readtable(file);
 	% transform to average day at DylosData 
