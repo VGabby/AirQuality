@@ -7,7 +7,7 @@ clear ; close all; clc ;
 table = readtable('data.csv');
 % 1st column (date)
 
-data = table(1:200,1:24);
+data = table(89:220,1:24);
 % clear error features
 data.Events = [];
 data.MaxGustSpeedKm_h = [];

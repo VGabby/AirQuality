@@ -4,7 +4,10 @@
 clear ; close all; clc ;
 disp('----- AIR QUALITY DATA CLEAN UP -----');
 disp('-----1. Processing WeatherData -----');
-filename = './Data/Weather_Data(2015-2017 Measured at TSN_AP.xlsx'
+%filename = './Data/Weather/Weather_Data(2015-2017 Measured at TSN_AP.xlsx'
+
+fileList = dir('./Data/Weather/*.xlsx');
+filename = strcat(fileList(1).folder,'/',fileList(1).name);
 weatherTable = readtable(filename);
 fprintf('Load table size \n');
 weatherTable.Properties.VariableNames{'x7'} = 'Date'; % fix name
@@ -14,15 +17,21 @@ size(weatherTable)
 
 disp('-----2. Processing US_data-----');
 %[No,Site,Param,Date,Year,Month,Day,Hour,...]
-filename = './Data/HoChiMinhCity_PM2.5_2017_YTD.csv'
-US_data = readtable(filename);
+fileList = dir('./Data/US/*.csv');
+UStbl = [];
+for i = 1: size(fileList,1)
+	filename = strcat(fileList(i).folder,'/',fileList(i).name)
+	US_data = readtable(filename);
+	iv = find( ~(strcmp(US_data.QCName,'Valid')));
+	fprintf('Clear %d invalid reading \n', length(iv));
+	US_data(iv,:) = [];
+%	UStbl = vertcat(UStbl,US_data);
+%	size(UStbl)
+end	
 % transform to average day at US_data 
 usDataOut = [];
 aveDay = [];
 dayV = datetime();
-iv = find( ~(strcmp(US_data.QCName,'Valid')));
-fprintf('Clear %d invalid reading \n', length(iv));
-US_data(iv,:) = [];
 while(size(US_data,1) > 0)
 	y = US_data.Year(1);
     m = US_data.Month(1);
@@ -35,11 +44,11 @@ while(size(US_data,1) > 0)
     aveDay(end+1) = mean(US_data.RawConc_(v));
     US_data(v,:) = [];
 end
-	dayV(1) = []; % clean up first element
-	usTable = table;
-	usTable.Date = dayV';
-	usTable.mass_aveDay_US = aveDay';
 
+dayV(1) = []; % clean up first element
+usTable = table;
+usTable.Date = dayV';
+usTable.mass_aveDay_US = aveDay';
 %Create usTable with timestamp
 % Join weather and US table by TimeStamp
 
@@ -48,11 +57,11 @@ Out = outerjoin(weatherTable,usTable,'MergeKeys',true);
 
 disp('-----3. Processing ISTable-----');
 
-filename = './Data/ISHCMC Pollution Readings.xlsx';
+filename = './Data/IS/ISHCMC Pollution Readings.xlsx';
 sheetname = ["1617", "1718"];
 
 for s = 1:size(sheetname,2)
-	s
+	sheetname(s)
 	%[Date,mass,count]
 	ISTable = readtable(filename,'Sheet',sheetname(s));
 	ISTable.Properties.VariableNames{'Month_Day_Year'} = 'Date';
@@ -94,8 +103,7 @@ a1 = [];
 a2 = [];
 % merge all txt file
 while(k < size(fileList,1) )
-	k
-	file = strcat(fileList(k).folder,'/',fileList(k).name);
+	file = strcat(fileList(k).folder,'/',fileList(k).name)
 	dylosData = readtable(file);
 	[y,m,d] = (ymd(dylosData.Date_Time));
 	if( y < 2000)
