@@ -31,7 +31,7 @@ while(size(US_data,1) > 0)
     % filter valid data in day
     v = find((US_data.Year == y) & (US_data.Month == m) & (US_data.Day == d));
 
-    dayV(end+1) = datetime(y,m,d);
+    dayV(end+1) = datetime(y,m,d,'Format','d-MMM-y');
     aveDay(end+1) = mean(US_data.RawConc_(v));
     US_data(v,:) = [];
 end
@@ -70,7 +70,6 @@ for s = 1:size(sheetname,2)
 		else
 			i = i + 1;	
 		end
-		
 	end
 	if(~isnumeric(ISTable.count_IS))	% convert to number if input is string
 		ISTable.count_IS = cellfun(@str2num,ISTable.count_IS);
@@ -79,60 +78,56 @@ for s = 1:size(sheetname,2)
 	Out = outerjoin(Out,ISTable(:,1:3),'MergeKeys',true);
 
 end
-
-%{
 disp('-----4. Processing DYLOS Data-----');
 % create temp table
-DateV = datetime();
 mass_aveDay_DylosV1 = 0;
 mass_aveDay_DylosV2 = 0;
 
 fileList = dir('./Data/Dylos/*.txt');
 
 k = 1;
-while(k <= size(fileList,1))
+datetbl = datetime('now','Format','d-MMM-y');
+aveDay1 = [];
+aveDay2 = [];
+d1  = datetime('now','Format','d-MMM-y');
+a1 = [];
+a2 = [];
+% merge all txt file
+while(k < size(fileList,1) )
+	k
 	file = strcat(fileList(k).folder,'/',fileList(k).name);
 	dylosData = readtable(file);
-	% transform to average day at DylosData 
-
-	i = 1;
-	aveDay1 = [];	
-	aveDay2 = [];	
-	dayV = datetime();
-	while(i < size(dylosData,1))
-		[y,m,d]= ymd(dylosData.Date_Time(i));
-		[yy,mm,dd] = ymd(dylosData.Date_Time(i+1));
-		sumDay1 =  dylosData.Small(i);
-		sumDay2 =  dylosData.Large(i);
-		j = 1;
-		while( (y == yy) && (m == mm) && (d == dd))
-			sumDay1 = sumDay1 + dylosData.Small(i+j);
-			sumDay2 = sumDay2 + dylosData.Large(i+j);
-			j = j + 1;
-			if((i + j) <= size(dylosData,1))
-				[yy,mm,dd] = ymd(dylosData.Date_Time(i + j));
-			else
-				break
-			end
-		end
-		sumDay1 = sumDay1 / j ;
-		sumDay2 = sumDay2 / j ;
-	    aveDay1(end+1) = sumDay1 / j;
-	    aveDay2(end+1) = sumDay2 / j;
-	    y = y + 2000 ; % fix later !
-	    dayV(end+1) = datetime(y,m,d);
-		i = i + j;
+	[y,m,d] = (ymd(dylosData.Date_Time));
+	if( y < 2000)
+		y = y + 2000;
 	end
-	dayV(1) = []; % clean up first element
-
-	DateV = horzcat(DateV,dayV);
-	mass_aveDay_DylosV1 = horzcat(mass_aveDay_DylosV1,aveDay1);
-	mass_aveDay_DylosV2 = horzcat(mass_aveDay_DylosV2,aveDay2);
-	k = k + 1
+	dateV = datetime(y,m,d,'Format','d-MMM-y');
+	dylosData.Date_Time = dateV;
+	d1 = [d1, dylosData.Date_Time'];
+	a1 = [a1, dylosData.Small'];
+	a2 = [a2, dylosData.Large'];
+	k = k + 1;
 end
-% merge to DylosTable
-dylosTable = table(DateV',mass_aveDay_DylosV1',mass_aveDay_DylosV2','VariableNames',{'Date' 'aveDay_Dylos_Small' 'aveDay_Dylos_Large'});
+	d1(:,1) = [];
 
+% calculate average  
+while(size(d1,2) > 0)
+	t = d1(1,1);
+
+    % filter valid data in day
+    v = find(d1(1,:) == t);
+
+    datetbl(end+1) = t;
+    aveDay1(end+1) = mean(a1(1,v));
+    aveDay2(end+1) = mean(a2(1,v));
+
+    d1(:,v) = [];
+    a1(:,v) = [];
+    a2(:,v) = [];
+
+end
+datetbl(:,1) = [];
+dylosTable = table(datetbl',aveDay1',aveDay2','VariableNames',{'Date' 'aveDay_Dylos_Small' 'aveDay_Dylos_Large'});
 % Join weather and US table by TimeStamp
 Out = outerjoin(Out,dylosTable,'MergeKeys',true);
 disp('-----5. Processing LaserEgg Data-----');
@@ -184,7 +179,7 @@ laserEggTable = table(dayV',aveDayPM2',aveDayPM10','VariableNames',{'Date' 'LE_P
 
 % Join weather and US table by TimeStamp
 Out = outerjoin(Out,laserEggTable,'MergeKeys',true);
-%}
+
 disp('----- EXPORT CSV file --------');
 writetable(Out,'data.csv')
 
