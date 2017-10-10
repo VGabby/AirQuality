@@ -37,7 +37,7 @@ while(size(US_data,1) > 0)
     m = US_data.Month(1);
     d = US_data.Day(1);
 
-    % filter valid data in day
+    % filter out valid data in day
     v = find((US_data.Year == y) & (US_data.Month == m) & (US_data.Day == d));
 
     dayV(end+1) = datetime(y,m,d,'Format','d-MMM-y');

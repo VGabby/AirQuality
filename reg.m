@@ -15,6 +15,21 @@ data.Date = [];
 % display first 5 row of  data
 data(1:5,:)
 
+% plot output vs time 
+hold on ;
+x = table.Date; % time vector
+y1 = table.mass_aveDay_US;
+y2 = table.mass_IS;
+y3 = table.aveDay_Dylos_Small* 0.003; % convert to mass
+y4 = table.LE_Pm10;
+plot(x,y1,x,y2,x,y3,x,y4);
+xlabel('Time');
+ylabel('Mass (mu g) ')
+title('PM_{10} Reading ')
+legend('US', 'IS','DL','LE')
+
+hold off;
+
 fprintf('1. Run Regression on US data \n');
 % Fit Linear Model with Response Variable
 mdl1 = fitlm(data,'linear','ResponseVar','mass_aveDay_US');
