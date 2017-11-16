@@ -52,7 +52,7 @@ def getDataByDay(date,location):
 				label_hourly = label_hourly + key + ","
 			label_hourly = label_hourly + "\n"
 		else: 
-			print "Date: " + date + "no observation recorded at " + query
+			print "Date: " + date + "no observation recorded at " + location
 			label_hourly = "NaN\n"
 
 		# END OF OBSERVATION CODE
@@ -61,6 +61,8 @@ def getDataByDay(date,location):
 		label_daily = "date,type," ;
 		row_daily  = date + ",daily," ;
 		del st['date']
+		if 'utcdate' in st:
+			del st['utcdate']
 		for key,value in st.items():
 			label_daily = label_daily + key + ","	
 			if not value:
@@ -101,8 +103,8 @@ def getLastestData(location):
 # main program 
 
 year = [2015, 2016, 2017]
-pws = "VVTS" # station code
+pws = ["VVTS","pws:IHOCHIMI5"] # station code
 
-getDataByYear(year[2],pws)
+getDataByYear(year[1],pws[1])
 
 
